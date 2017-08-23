@@ -12,6 +12,9 @@ wget -q https://git-scm.com/download/win -q -O - | grep -Eo 'https://github.com/
 # Raspbian
 echo 'https://downloads.raspberrypi.org/raspbian_latest' >> list
 
+# Cura, latest version vor win64 and AppImage
+wget -q http://software.ultimaker.com/current/ -O - | grep -Eo 'Cura-[0-9]\.[0-9]\.[0-9](-win64\.exe|\.AppImage)' | sort -ur | sed -e 's/^/http:\/\/software.ultimaker.com\/current\//' | head -2 >> list
+
 # Finally: Download the complete list. 
 # Preserve original file names with --content-disposition (important for raspbian etc)
 # Do not download files that were already downloaded (-nc, no-clobber)
